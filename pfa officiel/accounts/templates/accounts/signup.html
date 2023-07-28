@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <p class="title">Sign up </p>
+    
+        <div class="flex">
+        <label>
+            <input required="" placeholder="" type="text" class="input" id="first_name" name="first_name">
+            <span>Firstname</span>
+        </label>
+
+        <label>
+            <input required="" placeholder="" type="text" class="input" id="last_name" name="last_name">
+            <span>Lastname</span>
+        </label>
+    </div>  
+
+    <label>
+        <input required="" placeholder="" type="username" class="input" id="username" name="username">
+        <span>Username</span>
+    </label> 
+
+    <label>
+        <input required="" placeholder="" type="email" class="input" id="email" name="email">
+        <span>Email</span>
+    </label> 
+        
+    <label>
+        <input required="" placeholder="" type="password" class="input" id="password" name="password">
+        <span>Password</span>
+    </label>
+    <label>
+        <input required="" placeholder="" type="password" class="input" id="password" name="password">
+        <span>Confirm password</span>
+    </label>
+    <button class="submit">Submit</button>
+    <p class="signin">Already have an acount ? <a href={% url 'login' %}>Log in</a> </p>
+</form>
+{% endblock %}

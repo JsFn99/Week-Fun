@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Search Results for "{{ query }}"</h2>
+    {% if events|length != 0%}
+    <div class="event-container">
+        <ul>
+            {% for event in events %}
+            <div class="card-event-category">
+                <a href="{% url 'event' event.Slug %}">
+                <h2>{{ event.Name }}</h2>
+                {% if event.Image %}
+                <img src="{{ event.Image.url }}" alt="{{ event.Name }}" width="500" />
+                {% endif %}
+                <h3>Price: {{ event.Lowest_Price }}$ - {{ event.Highest_Price }}$</h3>
+                <p>Date: {{ event.Date|date:'Y-m-d' }}</p>
+                <p>Address: {{ event.Adresse }}</p>
+                <p>{{ event.Description }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No events found.</p>
+    {% endif %}
+{% endblock %}

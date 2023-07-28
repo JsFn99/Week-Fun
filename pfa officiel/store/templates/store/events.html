@@ -1,0 +1,50 @@
+ {% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+    <div class="columns">
+        <div class="column is-12">
+            <div class="title-div">
+                <h1 class="title is-1">Events</h1>
+            </div>
+        </div>
+    </div>
+<div class="event-container">
+    {% for events in event %}
+          {% if events.Type == "Public" %}
+            <div class="card-event">
+                 <div class="category-div">
+                    <p class="subtitle is-4">{{ events.Category }}</p>
+                </div>
+            <div class="card-image">
+                <figure class="image is-4by3">
+                {% if events.Image %}
+                   <a href="{% url 'event' events.Slug %}">
+                     <img src="{{ events.Image.url }}" alt="{{ events.Name }}" width="400">
+                   </a>
+                {% endif %}
+                </figure>
+            </div>
+    <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                </div>
+                <div class="media-content">
+                    <a href="{% url 'event' events.Slug %}">
+                       <p class="title is-2">{{ events.Name }}</p>
+                    </a>
+                </div>
+            </div>
+        <div class="content">
+           <time> Date: {{ events.Date|date:'Y-m-d' }}</time>
+           <p>{{ events.Country }}</p>
+           <br>
+        </div>
+    </div>
+</div>
+         {% endif %}
+    {% endfor %}
+</div>
+</br>
+</br>
+{% endblock %}

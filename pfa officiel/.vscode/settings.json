@@ -1,0 +1,9 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none",
+    "genieai.promptPrefix.customPrompt2-enabled": true,
+    "genieai.response.showNotification": true,
+    "genieai.enableConversationHistory": true
+}

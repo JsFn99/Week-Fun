@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="kamal">
+    <h2>Welcome to the {{ selected_category }} category page!</h2>
+</div>
+    <div class="event-container">
+        {% for event in events %}
+            {% if event.Type == "Public" %}
+                <div class="card-event-category">
+                    <a href="{% url 'event' event.Slug %}">
+                    <h2>{{ event.Name }}</h2>
+                    {% if event.Image %}
+                    <img src="{{ event.Image.url }}" alt="{{ event.Name }}" width="500" />
+                    {% endif %}
+                    <h3>Price: {{ event.Lowest_Price }}$ - {{ event.Highest_Price }}$</h3>
+                    <p>Date: {{ event.Date|date:'Y-m-d' }}</p>
+                    <p>Address: {{ event.Adresse }}</p>
+                    <p>{{ event.Description }}</p>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

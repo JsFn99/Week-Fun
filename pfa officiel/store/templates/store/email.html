@@ -1,0 +1,23 @@
+<!-- email/order_confirmation.html -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Order Confirmation</h1>
+  <p>Thank you for your order!</p>
+  
+  <h2>Order Details:</h2>
+  <ul>
+    {% for order in orders %}
+    <li>{{ order.event.name }} - {{ order.quantity }} x ${{ order.event.lowest_price }}</li>
+    {% endfor %}
+  </ul>
+  
+  <p>Total: ${{ total }}</p>
+  
+  <p>Please let us know if you have any questions.</p>
+  
+  <p>Best regards,</p>
+  <p>Your Store Team</p>
+</body>
+</html>

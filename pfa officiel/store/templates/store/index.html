@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+    <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title1">
+              Welcome to the home page!
+            </h1>
+            <h2 class="subtitle">
+              Find your next event
+            </h2>
+          </div>
+        </div>
+    </section>
+    <div class="kamal">
+    <h1>Public events</h1>
+    </div>
+<div class="event-container">
+    {% for events in event %}
+        {% if events.Type == "Public" %}
+            {% if forloop.counter <= 6 %}
+                <div class="card-event">
+                    <div class="category-div">
+                        <p class="subtitle is-4">{{ events.Category }}</p>
+                    </div>
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            {% if events.Image %}
+                                <a href="{% url 'event' events.Slug %}">
+                                    <img src="{{ events.Image.url }}" alt="{{ events.Name }}" width="400">
+                                </a>
+                            {% endif %}
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            </div>
+                            <div class="media-content">
+                                <a href="{% url 'event' events.Slug %}">
+                                    <p class="title is-2">{{ events.Name }}</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <time> Date: {{ events.Date|date:'Y-m-d' }}</time>
+                            <p>{{ events.Country }}</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div class="show-more-button">
+    <a class="show-more-button" href="{% url 'events' %}">Show more events <img src="{% static "icons/next.png"%}" width=20px></a>
+</div>
+
+</br>
+<section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title1">
+              Largest platform
+            </h1>
+            <h2 class="subtitle is-3">
+              With a variety of events from all around the world
+            </h2>
+          </div>
+        </div>
+    </section>
+    <div class="kamal">
+    <h1>Trending cities</h1>
+    </div>
+<div class="city-container">
+    <div class="six-columns">
+        <a href="{% url 'country' 'Spain' %}">
+            <div class="image-container">
+                <img src="{% static 'store/images/barcelona.jpg' %}" alt="Barcelona" width="450px">
+                <p class="city-name">Barcelona</p>
+            </div>
+        </a>
+    </div>
+    <div class="six-columns">
+        <a href="{% url 'country' 'United States' %}">
+            <div class="image-container">
+                <img src="{% static 'store/images/newyork.jpg' %}" alt="New York" width="450px">
+                <p class="city-name">New York</p>
+            </div>
+        </a>
+    </div>
+    <div class="six-columns">
+        <a href="{% url 'country' 'United Kingdom' %}">
+            <div class="image-container">
+                <img src="{% static 'store/images/london.jpg' %}" alt="London" width="450px">
+                <p class="city-name">London</p>
+            </div>
+        </a>
+    </div>
+    <div class="six-columns">
+        <a href="{% url 'country' 'France' %}">
+            <div class="image-container">
+                <img src="{% static 'store/images/paris.jpg' %}" alt="Paris" width="450px">
+                <p class="city-name">Paris</p>
+            </div>
+        </a>
+    </div>
+    <div class="six-columns">
+        <a href="{% url 'country' 'Morocco' %}">
+            <div class="image-container">
+                <img src="{% static 'store/images/casablanca.jpg' %}" alt="Casablanca" width="450px">
+                <p class="city-name">Casablanca</p>
+            </div>
+        </a>
+    </div>
+    <div class="six-columns">
+        <a href="{% url 'country' 'Egypt' %}">
+            <div class="image-container">
+                <img src="{% static 'store/images/cairo.jpg' %}" alt="Cairo" width="450px">
+                <p class="city-name">Cairo</p>
+            </div>
+        </a>
+    </div>
+</div>
+    {% if user.is_authenticated %}
+</br>
+        <div>
+            <a class="create-event" href="{% url 'create_event' %}"><img src="{% static "icons/create.png"%}" width=20px> Create your event</a>
+        </div>
+    </br>
+    {% endif %}
+{% endblock %}

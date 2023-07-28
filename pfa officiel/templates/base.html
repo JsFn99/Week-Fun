@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Week And Fun</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <script src="{% static 'js/script.js' %}"></script>
+    <div class="page-header-top">
+      {% if user.is_authenticated %}
+            <h2 class="subtitle is-5">Hello {{ user.username }}</h2>
+            {% if user.cart %}
+            <div class="cart-div">
+                {%if user.cart.Order.count == 1 %}
+                <a class="cart-button" href="{% url 'cart' %}"><img src="{% static "icons/panier.png"%}" width=30px> ({{ user.cart.Order.count }} event) </a>
+                {% elif user.cart.Order.count > 1%}
+                <a class="cart-button" href="{% url 'cart' %}"><img src="{% static "icons/panier.png"%}" width=30px> ({{ user.cart.Order.count }} events) </a>
+                {% endif %}
+                {% endif %}
+            </div>
+      {%endif%}
+    </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <div class="logo-container">
+          <a href="{% url 'index' %}">
+            <img src="{% static 'images/WAF_LOGO.png' %}" alt="logo" class="logo" width="120px">
+          </a>
+        </div>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    <nav class="breadcrumb is-medium" aria-label="breadcrumbs">
+      <ul>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="{% url 'category' 'Sport' %}">
+            Sport
+          </a>
+
+          <a class="navbar-item" href="{% url 'category' 'Concert' %}">
+            Music
+          </a>
+    
+          <a class="navbar-item" href="{% url 'category' 'Theatre' %}">
+            Theatre
+          </a>
+
+          <a class="navbar-item" href="{% url 'category' 'Festival' %}">
+            Festival
+          </a>
+
+          <a class="navbar-item" href="{% url 'category' 'Conference' %}">
+            Talk
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Country    
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="{% url 'country' 'Argentina' %}">
+                Argentina
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Australia' %}">
+                Australia
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Austria' %}">
+                Austria
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Belgium' %}">
+                Belgium
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Brazil' %}">
+                Brazil
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Canada' %}">
+                Canada
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'China' %}">
+                China
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'France' %}">
+                France
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Germany' %}">
+                Germany
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'India' %}">
+                India
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Italy' %}">
+                Italy
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Japan' %}">
+                Japan
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Mexico' %}">
+                Mexico
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Morocco' %}">
+                Morocco
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'South Africa' %}">
+                South Africa
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'South Korea' %}">
+                South Korea
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Spain' %}">
+                Spain
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'United Kingdom' %}">
+                United Kingdom
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'United States' %}">
+                United States
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'United Arab Emirates' %}">
+                United Arab Emirates
+              </a>
+              <a class="navbar-item" href="{% url 'country' 'Uruguay' %}">
+                Uruguay
+              </a>
+            </div>
+          </div>
+        </div>
+        <li></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          </ul>
+</nav>  
+<form class="search" action="{% url 'search_events' %}" method="GET">
+    <input type="text" name="q" class="search__input" placeholder="Search..." value="{{ query }}">
+    <button class="search__button" type="submit">
+        <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
+            <g>
+                <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+            </g>
+        </svg>
+    </button>
+</form>
+        {% if user.is_authenticated %}
+    </br>
+             <div class="logout">
+                <a class="button is-link is-rounded" href="{% url 'logout' %}">Logout</a>  
+              </div>  
+        {%else%}
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-link is-rounded" href="{% url 'signup' %}">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-info is-rounded" href="{% url 'login' %}">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+        {%endif%}
+      </div>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        <p class="mb-1">&copy; 2017–2023 Week and Fun</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="{% url 'privacy'%}">Privacy</a></li>
+          <li class="list-inline-item"><a href="{% url 'terms'%}">Terms</a></li>
+          <li class="list-inline-item"><a href="{% url 'support'%}">Support</a></li>
+        </ul>
+      </footer>
+      
+</body>
+</html>

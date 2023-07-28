@@ -1,0 +1,89 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <a href="{% url 'index'%}">
+            <img src="{% static 'images/WAF_LOGO.png' %}" alt="logo" class="logo" width= 120px>
+        </a>
+    </header>
+    <h1>Privacy Policy</h1>
+    
+    <p>At Week And Fun, we value the privacy of our users. This Privacy Policy outlines the types of personal information we collect, how we use and protect that information, and your rights regarding your personal data. By using our website, you agree to the terms of this Privacy Policy.</p>
+    
+    <h2>Information We Collect</h2>
+    
+    <p>We may collect the following types of personal information when you use our website:</p>
+    
+    <ul>
+        <li>Full Name</li>
+        <li>Email Address</li>
+        <li>Phone Number</li>
+        <li>Address</li>
+        <li>Payment Information</li>
+        <li>Other information relevant to customer surveys and/or offers</li>
+    </ul>
+    
+    <h2>How We Use Your Information</h2>
+    
+    <p>The personal information we collect is used for the following purposes:</p>
+    
+    <ul>
+        <li>Processing and fulfilling orders</li>
+        <li>Providing customer support</li>
+        <li>Improving our products and services</li>
+        <li>Sending promotional emails or newsletters (with your consent)</li>
+        <li>Conducting market research</li>
+        <li>Securing and protecting our website and users</li>
+    </ul>
+    
+    <h2>Information Sharing and Disclosure</h2>
+    
+    <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this Privacy Policy. However, we may share your information with trusted third-party service providers who assist us in operating our website and serving you.</p>
+    
+    <h2>Security</h2>
+    
+    <p>We are committed to ensuring that your personal information is secure. We employ reasonable measures to protect your information from unauthorized access, disclosure, alteration, or destruction.</p>
+    
+    <h2>Your Rights</h2>
+    
+    <p>You have the following rights regarding your personal information:</p>
+    
+    <ul>
+        <li>The right to access, update, or delete your personal information</li>
+        <li>The right to object to the processing of your personal information</li>
+        <li>The right to withdraw consent</li>
+        <li>The right to data portability</li>
+        <li>The right to lodge a complaint with a supervisory authority</li>
+    </ul>
+    
+    <h2>Changes to this Privacy Policy</h2>
+    
+    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the updated policy on this page.</p>
+    
+    <h2>Contact Us</h2>
+    
+    <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+    
+    <p>Email: support@weekfun.com</p>
+    <p>Phone: +1-123-456-7890</p>
+    <footer class="footer">
+        <p class="mb-1">&copy; 2017–2023 Week and Fun</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="{% url 'privacy'%}">Privacy</a></li>
+          <li class="list-inline-item"><a href="{% url 'terms'%}">Terms</a></li>
+          <li class="list-inline-item"><a href="{% url 'support'%}">Support</a></li>
+        </ul>
+      </footer>
+</body>
+</html>
